@@ -1,10 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import Composite.Playlist;
-
 public final class ServicoStreaming {
-	private static volatile ServicoStreaming instance = null;
+	private static ServicoStreaming instance = null;
 	private String login, senha;
 	private TipoPlano plano;
 	private List<Playlist> diretorioMusicas;

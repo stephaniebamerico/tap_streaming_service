@@ -1,8 +1,6 @@
-package Composite;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import Visitor.ComponenteVisitor;
 
 /* "Composite" */
 public class Playlist extends Componente {
@@ -13,7 +11,7 @@ public class Playlist extends Componente {
 		this.nome = nome;
 		this.estiloMusical = estiloMusical;
 		this.estiloMusicalSecundario = estiloMusicalSecundario;
-		albuns = new ArrayList<Componente>();
+		this.albuns = new ArrayList<Componente>();
 	}
 	
 	@Override

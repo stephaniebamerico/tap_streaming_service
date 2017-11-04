@@ -1,4 +1,4 @@
-package Composite;
+
 import java.time.Duration;
 
 /* "Leaf" */

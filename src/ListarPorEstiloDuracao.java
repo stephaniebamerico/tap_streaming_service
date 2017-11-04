@@ -1,9 +1,5 @@
-package Visitor;
+
 import java.time.Duration;
-import Composite.Componente;
-import Composite.EstiloMusical;
-import Composite.Musica;
-import Composite.Playlist;
 
 public class ListarPorEstiloDuracao implements ComponenteVisitor {
 	private EstiloMusical estiloMusical;

@@ -1,5 +1,4 @@
-package Visitor;
-import Composite.Componente;
+
 
 public class ListarTodosElementos implements ComponenteVisitor {
 

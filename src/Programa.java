@@ -1,11 +1,4 @@
 import java.time.Duration;
-import Composite.Album;
-import Composite.EstiloMusical;
-import Composite.Musica;
-import Composite.Playlist;
-import Visitor.ListarMusicaPorEstilo;
-import Visitor.ListarPorEstiloDuracao;
-import Visitor.ListarTodosElementos;
 
 /* ========================================================================================================
  *                             Observações sobre a interpretação da especificação
@@ -15,18 +8,15 @@ import Visitor.ListarTodosElementos;
  * 1 - Inseririmos elementos repetidos.
  * 2 - Listamos elementos repetidos quantas vezes aparecerem.
  * 3 - Usamos Component do tipo "design for type safety" (mais detalhes na classe Componente).
- * 4 - Não limitamos a capacidade de nenhuma lista de elementos.
- * 5 - A listagem só imprime Nome e Estilo dos elementos (atributos específicos são ignorados).
- * 6 - Na listagem "playlists e músicas de um determinado estilo e com duração de mais de 3 minutos"
+ * 4 - A listagem só imprime Nome e Estilo dos elementos (atributos específicos são ignorados).
+ * 5 - Na listagem "playlists e músicas de um determinado estilo e com duração de mais de 3 minutos"
  * julgamos que a duração só deveria ser considerada para músicas (e não playlists).
  */
 
-public class Cliente {
+/* Cliente */
+public class Programa {
 	private static ServicoStreaming servicoStreaming;
-	// TODO Perguntar se tem capacidade maxima para diretorio, playlist e album
-	// TODO Perguntar se as listagens estão corretas imprimindo nome e estilo
-	// TODO Perguntar o listar por duração considera só músicas ou soma a duração da playlist
-	// TODO Perguntar o lista elementos repetidos
+	
 	public static void main(String[] args) {
 		/* Cria e inicializa (opcional) serviço streaming.*/
 		servicoStreaming = new ServicoStreaming();
@@ -37,6 +27,7 @@ public class Cliente {
 		/* Cria e inicializa todos componentes */
 		inicializaServico();
 		
+		/* Executa os três tipos de listagem */
 		System.out.println("# Listando todos os elementos do diretorio:");
 		for (Playlist p : servicoStreaming.getDiretorio()) {
 			p.aceitarVisitante(new ListarTodosElementos());
@@ -49,7 +40,7 @@ public class Cliente {
 		
 		System.out.println("# Listando por Pagode com duracao de mais de 3min:");
 		for (Playlist p : servicoStreaming.getDiretorio()) {
-			p.aceitarVisitante(new ListarPorEstiloDuracao(EstiloMusical.PAGODE, Duration.ofSeconds(180)));
+			p.aceitarVisitante(new ListarPorEstiloDuracao(EstiloMusical.PAGODE, Duration.ofMinutes(3)));
 		}
 			
 	}
